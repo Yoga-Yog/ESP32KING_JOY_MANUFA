@@ -8,60 +8,31 @@ const char* webSiteContent = R"(
 <META name='viewport' content='width=device-width, initial-scale=1', charset="utf-8">
 <link rel='shortcut icon' type='image/x-icon' href='/favicon'>
 <style>
-  #Paket { color: green; }
-  button { border: solid; border-radius: 300px; border-color: green; font-size: 15px; font-family: -webkit-pictograph; background: #d5e0d3; width: 155px; outline: none; }
-  button:hover { border: solid; border-radius: 300px; border-color: pink; font-size: 15px; font-family: -webkit-pictograph; background: #d5e0d3; width: 155px; }
-  input.button_s { border: double; border-color: green; border-radius: 30px; }
-  input.input1_c { width: 90%; height: 20px; border-radius: 30px; padding: 5px; }
-  input#input2 { width: 90%; height: 20px; border-radius: 30px; padding: 5px; }
-  body { background-repeat: no-repeat; background-position: center center; background-attachment: fixed; background-size: 47%; }
-  .selected {background-color: #c3d1c0; /* Цвет фона для выделенной строки */
-  }
-  /* Стили для таблицы с ID 'codeTable' */
-#codeTable {
-    width: 300px; /* Ширина таблицы */
-    border-collapse: collapse; /* Убираем двойные линии между ячейками */
-    border: 2px solid white; /* Прячем рамку вокруг таблицы */
-}
+    /* Основные стили */
+    body { background-color: #2E2E2E; color: #FFFFFF; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 10px; }
+    .container { display: flex; flex-direction: column; align-items: center; max-width: 1000px; margin: auto; }
 
-/* Стили для ячеек таблицы в таблице с ID 'codeTable' */
-#codeTable TD, #codeTable TH {
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid maroon; /* Рамка вокруг ячеек */
-    text-align: left; /* Выравнивание текста по левому краю */
-}
-        /* Простые стили для вкладок */
-        .tabs {
-            display: flex;
-            margin-bottom: 10px;
-        }
-        .tab {
-            padding: 10px;
-            cursor: pointer;
-            background-color: #f1f1f1;
-            margin-right: 5px;
-        }
-        .active {
-            background-color: #ddd;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-    div#tabsbuts {
-           margin-left: 50%;
-                  }
- /* Контейнер для таблиц */
-.table-container {
-    display: flex;
-    gap: 20px; /* Расстояние между таблицами */
-}
-/* Обертка для каждой таблицы */
-.table-wrapper {
-    width: 48%; /* Каждая таблица займет примерно половину доступного пространства */
-}
+    /* Вкладки */
+    .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .tab { padding: 10px; cursor: pointer; background-color: #444; color: white; border-radius: 5px; flex: 1; text-align: center; min-width: 100px; }
+    .tab.active { background-color: #666; }
+    .tab-content { display: none; padding: 20px; }
+    .tab-content.active { display: block; }
+
+    /* Кнопки */
+    .button-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; }
+    button { border: solid 2px #00FF00; border-radius: 30px; font-size: 16px; background: #444; color: white; width: 160px; padding: 10px; cursor: pointer; }
+    button:hover { border-color: pink; background: #555; }
+
+    /* Поля ввода */
+    .input-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; }
+    input { width: 100%; max-width: 200px; height: 30px; border-radius: 5px; padding: 5px; background: #222; color: #DDD; text-align: center; }
+
+    /* Таблицы */
+    .table-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 800px; }
+    .table-wrapper { width: 100%; max-width: 400px; }
+    table { width: 100%; border-collapse: collapse; border: 2px solid white; }
+    th, td { padding: 10px; border: 1px solid maroon; text-align: center; background: #333; color: white; }
 </style>
 <BODY onload='process()'>
 <!-- Вкладки для навигации -->
@@ -72,7 +43,7 @@ const char* webSiteContent = R"(
 </div>
 <!-- Содержимое вкладок -->
 <div id='tab1' class='tabcontent active-tab'>
-WifiScaner<br>
+<br>
 Время работы = <A ID='runtime'></A><br>
 Сила сигнала <A ID='Sila'></A><br>
 CodeGrabing<br> <A ID='Batareya'></A><br>
